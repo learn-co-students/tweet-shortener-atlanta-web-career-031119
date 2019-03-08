@@ -28,3 +28,27 @@ def word_substituter(tweet)
   tweet=tweet_pieces.join(" ")
   return tweet
 end
+
+def bulk_tweet_shortener(tweets)
+  tweets.map do |twit|
+    puts word_substituter(twit)
+  end
+end
+
+def selective_tweet_shortener(tweet)
+  if tweet.length>140
+    return word_substituter(tweet)
+  else
+    return tweet
+  end
+end
+
+def shortened_tweet_truncator(tweet)
+  chirp=selective_tweet_shortener(tweet)
+  if chirp.length>140
+    bawk=chirp[0..136]+"..."
+    return bawk
+  else
+    return chirp
+  end
+end
